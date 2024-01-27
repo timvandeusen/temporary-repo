@@ -1,0 +1,41 @@
+<article>
+  <div>
+    <h2 class="title">{{post.title}}</h2>
+  </div>
+
+  {{#if post.file_url}}
+    <div class="image-preview-single">
+      <img src="{{post.file_url}}" alt="Uploaded file" />
+    </div>
+  {{/if}}
+
+  <div>
+    <p class="content">{{post.content}}</p>
+  </div>
+
+  <div>
+    <p>Created by: {{post.user.name}}</p>
+    <p>Created on: {{format_date post.date_created}}</p>
+  </div>
+</article>
+
+<!-- Test area -->
+<p id="postId">{{post.id}}</p>
+
+<article>
+  {{#if comments.length}} 
+    <h2>Comments</h2>
+
+    {{#each comments as |comment|}}
+      <div>
+        <p>{{comment.content}}</p>
+        <p>by {{comment.user.name}}</p>
+      </div>
+    {{/each}}
+  {{/if}}
+
+  <textarea name="Comment area" id="comment" cols="30" rows="2" placeholder="Add a comment"></textarea>
+  <button id="send-comment" type="submit">Send</button>
+</article>
+
+<script src="/js/commentBox.js"></script>
